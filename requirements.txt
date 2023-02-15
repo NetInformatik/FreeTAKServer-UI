@@ -4,4 +4,8 @@ flask_migrate
 flask_wtf
 flask_sqlalchemy
 email_validator
+eventlet
 gunicorn
+python-decouple
+requests
+sqlalchemy-utils
