@@ -28,7 +28,7 @@ def index():
        return redirect(url_for('base_blueprint.login'))
 
     return render_template('index.html', segment='index',
-    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'],
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'], ipclient=app.config['FTS_HOST_CLIENT'],
     userinterval=app.config['USERINTERVAL'],serverhealthinterval=app.config['SERVERHEALTHINTERVAL'], sysstatusinterval=app.config['SYSSTATUSINTERVAL']
     )
 
@@ -53,7 +53,7 @@ def missionApi():
     excheck_json_data = excheck_json_data['ExCheck']['Templates'],
     outgoing_federation_json_data = outgoing_federation_json_data['federations'],
     segment = "mission",
-    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'],
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'], ipclient=app.config['FTS_HOST_CLIENT'],
     datapackagesizelimit=app.config['DATAPACKAGESIZELIMIT']
     
      )
@@ -70,7 +70,7 @@ def connectApi():
     json_data = json_data.json()
     
     return render_template('connect.html', json_data = json_data['json_list'], segment="connect",
-    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'], ipclient=app.config['FTS_HOST_CLIENT'])     
 
 
 @blueprint.route('/configure')
@@ -81,26 +81,26 @@ def configureApi():
 
     return render_template('configure.html', segment="configure", 
     outgoing_federation_json_data = outgoing_federation_json_data['federations'],
-    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'], ipclient=app.config['FTS_HOST_CLIENT'])
 
 @blueprint.route('/users')
 @login_required
 def usersApi():
     return render_template('users.html', segment="users", 
-    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'], ipclient=app.config['FTS_HOST_CLIENT'])     
       
 @blueprint.route('/about')
 @login_required
 def aboutApi():
     return render_template('about.html', segment="about", uiversion=app.config['UIVERSION'],
-    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'])     
+    websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'], ip=app.config['IP'], ipclient=app.config['FTS_HOST_CLIENT'])     
 
 @blueprint.route('/webmap')
 @login_required
 def webmapApi():
     return render_template('webmap.html', segment="webmap", uiversion=app.config['UIVERSION'],
                            websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], port=app.config['PORT'],
-                           ip=app.config['IP'], webmapip=app.config['WEBMAPIP'], webmapport=app.config["WEBMAPPORT"])
+                           ip=app.config['IP'], webmapip=app.config['WEBMAPIP'], webmapport=app.config["WEBMAPPORT"], ipclient=app.config['FTS_HOST_CLIENT'])
 
 @blueprint.route('/page-user', methods=['GET', 'POST'])
 @login_required
@@ -122,7 +122,7 @@ def page_user():
 
     else:
         uid = copy.copy(current_user.uid)
-        return render_template('page-user.html', form=update_account_form, ip=app.config["IP"], port=app.config["PORT"], websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], user_id=uid)
+        return render_template('page-user.html', form=update_account_form, ip=app.config["IP"], ipclient=app.config['FTS_HOST_CLIENT'], port=app.config["PORT"], websocketkey=app.config['WEBSOCKETKEY'], apikey=app.config['APIKEY'], user_id=uid)
 
 @blueprint.route('/mission/<id>/qr')
 def qr(id):

@@ -386,7 +386,7 @@
 		// this gets current server data
 		async function establishConnection() {
 			console.log("Make connection");
-			var socket = io.connect(`http://{{ip}}:{{port}}`);
+			var socket = io.connect(`http://{{clientip}}:{{port}}`);
 			// connect_timeout
 			socket.on('connect_error', function() {
 				   console.log("Sorry, there seems to be an issue with the connection!");

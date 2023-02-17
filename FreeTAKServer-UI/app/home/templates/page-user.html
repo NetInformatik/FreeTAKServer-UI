@@ -63,7 +63,7 @@
 <!-- Specific Page JS goes HERE  -->
 {% block javascripts %}
 <script>
-	var socket = io.connect(`http://{{ip}}:{{port}}`);
+	var socket = io.connect(`http://{{clientip}}:{{port}}`);
 	const authenticate = (socket) => {
 
 		socket.emit("authenticate", JSON.stringify({ Authenticate: "{{websocketkey | safe}}" }));
