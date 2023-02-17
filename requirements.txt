@@ -6,6 +6,7 @@ flask_sqlalchemy
 email_validator
 eventlet
 gunicorn
+mysql-connector-python
 python-decouple
 requests
 sqlalchemy-utils
