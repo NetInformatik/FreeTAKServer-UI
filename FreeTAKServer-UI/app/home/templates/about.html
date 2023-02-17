@@ -120,7 +120,7 @@
      document.getElementById("ui-ip").innerText = self.location.host ;
 
 	 async function establishConnection() {
-		var socket = io.connect(`http://{{clientip}}:{{port}}`);
+		var socket = io.connect(`http://{{ipclient}}:{{port}}`);
 		getConnectInfo(socket);
 		let isAuth = await authenticate(socket);
 
@@ -154,7 +154,7 @@
 		socket.on("connectUpdate", function (data) {
 			let connectObject = JSON.parse(data);
 			document.getElementById("server-version").innerText = connectObject.version;
-			document.getElementById("server-ip").innerText = "{{clientip}}" ;
+			document.getElementById("server-ip").innerText = "{{ipclient}}" ;
 		});
 	};
 

@@ -408,7 +408,7 @@
 
 <script>
 
-var socket = io.connect(`http://{{clientip}}:{{port}}`);
+var socket = io.connect(`http://{{ipclient}}:{{port}}`);
 
 var tcpip;
 var tcpport;
@@ -647,7 +647,7 @@ const authenticate = (socket) => {
 
 		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
 
-		fetch(`http://{{clientip}}:{{port}}/DataPackageTable?filename=${file.name}&creator={{current_user.name}}`, {
+		fetch(`http://{{ipclient}}:{{port}}/DataPackageTable?filename=${file.name}&creator={{current_user.name}}`, {
 			method: "POST",
 			headers: headers,
 			body: formData,
@@ -703,7 +703,7 @@ const authenticate = (socket) => {
 
 		headers = { Authorization: "{{apikey | safe}}", Connection: "Keep-Alive" };
 		
-		fetch(`http://{{clientip}}:{{port}}/ExCheckTable`, {
+		fetch(`http://{{ipclient}}:{{port}}/ExCheckTable`, {
 			method: "POST",
 			headers: headers,
 			body: inputExcheck.files[0],
@@ -770,7 +770,7 @@ const authenticate = (socket) => {
 	function deleteDataPackage() {
 		
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{clientip}}:{{port}}/DataPackageTable", {
+		fetch("http://{{ipclient}}:{{port}}/DataPackageTable", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify({
@@ -796,7 +796,7 @@ const authenticate = (socket) => {
 
 		
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{clientip}}:{{port}}/ExCheckTable", {
+		fetch("http://{{ipclient}}:{{port}}/ExCheckTable", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -815,7 +815,7 @@ const authenticate = (socket) => {
 		}
 
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{clientip}}:{{port}}/FederationTable", {
+		fetch("http://{{ipclient}}:{{port}}/FederationTable", {
 			method: "DELETE",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -842,7 +842,7 @@ const authenticate = (socket) => {
 		} 
 
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{clientip}}:{{port}}/FederationTable", {
+		fetch("http://{{ipclient}}:{{port}}/FederationTable", {
 			method: "POST",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -869,7 +869,7 @@ const authenticate = (socket) => {
 		} 
 
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{clientip}}:{{port}}/FederationTable", {
+		fetch("http://{{ipclient}}:{{port}}/FederationTable", {
 			method: "PUT",
 			headers: headers,
 			body: JSON.stringify(obj),
@@ -907,7 +907,7 @@ const authenticate = (socket) => {
 		};
 		
 		headers = { Authorization: "{{apikey | safe}}" };
-		fetch("http://{{clientip}}:{{port}}/DataPackageTable", {
+		fetch("http://{{ipclient}}:{{port}}/DataPackageTable", {
 			method: "PUT",
 			headers: headers,
 			body: JSON.stringify(obj),
