@@ -31,7 +31,7 @@ class Config(object):
     IP = config("FTS_HOST", default='127.0.0.1')
 
     # The URL the client uses
-    CLIENT_ENDPOINT = config("FTS_HOST_CLIENT", default="127.0.0.1")
+    IP_CLIENT = config("FTS_HOST_CLIENT", default="127.0.0.1")
 
     # Port the  UI uses to communicate with the API
     PORT = config("FTS_API_PORT", default='19023')
